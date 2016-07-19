@@ -84,7 +84,11 @@ Make shure you have created a static entry on your DHCP Server and a host entry 
  6. Navigate to add a host. You will see something like:
  
  ```
- sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:{RANCHERVERSION} http://{RANCHERURL}:{RANCHERPORT}/v1/scripts/{JOINTOKEN}
+ sudo docker run -d --privileged \
+ -v /var/run/docker.sock:/var/run/docker.sock \
+ -v /var/lib/rancher:/var/lib/rancher \
+ rancher/agent:{RANCHERVERSION} \
+ http://{RANCHERURL}:{RANCHERPORT}/v1/scripts/{JOINTOKEN}
  ```
  7. IN the DNS TXT Record add or modify the following entries based on the RUN Command in the "add Host page" of Rancher UI: 
 
