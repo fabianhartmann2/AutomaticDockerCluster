@@ -49,7 +49,7 @@ Use my script "bootcdassistant.sh" to copy all files from the iso file.
 9. Open ./isolinux/txt.cfg in your editor
 10. Add two new entries for your configuration. something like this:
 
-``` 
+	``` 
 	label ranchermaster
   	menu label ^Rancher Master
   	kernel /install/vmlinuz
@@ -60,9 +60,8 @@ Use my script "bootcdassistant.sh" to copy all files from the iso file.
   	kernel /install/vmlinuz
   	append  file=/cdrom/preseed/ubuntu-server.seed vga=788 initrd=/install/	initrd.gz ks=cdrom:/client.cfg -- 
   	
-```
- 	
-12. Modify the label, menu label and path to your kickstart file. I've had troubles storing the cfg files in a directory on the cdrom, but root worked fine.
+	```
+ 	Modify the label, menu label and path to your kickstart file. I've had 	troubles storing the cfg files in a directory on the cdrom, but root worked 	fine.
 
 12. To create the ISO, run: `bootcdassistant.sh create {path to dumped file directory} {name of cdvolume} {path to new iso file}`
 	
