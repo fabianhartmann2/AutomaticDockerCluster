@@ -18,7 +18,7 @@ JOINTOKEN={Token to join nodes to a Enviroment}
 ### Prepare
 Define a IP-Ranche for the Cluster.
 Create a DNS Concept.
-In my case i use a subdomain (docker.praxisservices.local), every host is gets a host record with its company wide uniq machine name and a cname entry like node{sequence number}.
+In my case i use a subdomain (docker.praxisservices.local), every host gets a host record with its company wide uniq machine name and a cname entry like node{sequence number}.
 #### DHCP Entry
 Get the Mac Address of any Host you use in the Cluster and create a Static entry on the DHCP Server.
 #### DNS Records
@@ -34,7 +34,7 @@ Create a TXT entry with the following informations:
 Use my script "bootcdassistant.sh" to copy all files from the iso file.
 
 1. bootcdassistant.sh dump {PATH TO ISO}
-2. The Script shows you the path to de dumped files.
+2. The Script shows you the path to the dumped files.
 3. Navigate to the dumped file directory
 4. Use system-config-kickstart to create a Standard Kickstart file, based on your needs and save it twice to your dumped file directory. Named master.cfg and client.cfg
 5. Copy the `%post` section from my template tmplate_master.cfg file and paste it into master.cfg
@@ -49,7 +49,7 @@ Use my script "bootcdassistant.sh" to copy all files from the iso file.
 9. Open ./isolinux/txt.cfg in your editor
 10. Add two new entries for your configuration. something like this:
 
-	``` 
+``` 
 	label ranchermaster
   	menu label ^Rancher Master
   	kernel /install/vmlinuz
@@ -59,19 +59,62 @@ Use my script "bootcdassistant.sh" to copy all files from the iso file.
   	menu label ^Rancher Client
   	kernel /install/vmlinuz
   	append  file=/cdrom/preseed/ubuntu-server.seed vga=788 initrd=/install/	initrd.gz ks=cdrom:/client.cfg -- 
-  	```
   	
-  	Modify the label, menu label and path to your kickstart file. I've had 	troubles storing the cfg files in a directory on the cdrom, but root worked 	fine.	
-11. To create the ISO, run: `bootcdassistant.sh create {path to dumped file directory} {name of cdvolume} {path to new iso file}`
+```
+  	
+Modify the label, menu label and path to your kickstart file. I've had troubles storing the cfg files in a directory on the cdrom, but root worked fine.
 
-	
-	
+11. To create the ISO, run: `bootcdassistant.sh create {path to dumped file directory} {name of cdvolume} {path to new iso file}`
 	
 ### Installation
 #### MASTER
-Make shure you have created a static entry on your DHCP Server and a host entry on your DNS. Verify your previous created TXT reccord. (Required values: DOCKERSCRIPTVERSION, AGENT, RANCHERPORT)
+Make shure you have created a static entry on your DHCP Server and a host entry on your DNS. Verify your previous created TXT reccord. (Required values: DOCKERSCRIPTVERSION, RANCHERPORT)
+
 1. Boot your Server, VM, whatever with your new created bootCD
-2. Choose your previous created entry
+2. Choose your previous created entry `Rancher Master`
+3. Ubuntu will be installed automatically
+
+	- gets its Hostname from DNS
+ 	- gets Static IP from DHCP
+ 	- installs predefined packages
+ 	- installs udpates
+ 	- fetch Dockerversion, Rancherport --> installs Docker and Rancher Server
+
+ 4. Open a Browser and browse to {FQDN of Master}:{Rancherport}
+ 5. Create a Enviroment and choose Orchestration Tecnology
+ 6. Navigate to add a host. You will see something like:
+ 
+ ```
+ sudo docker run -d --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:{RANCHERVERSION} http://{RANCHERURL}:{RANCHERPORT}/v1/scripts/{JOINTOKEN}
+ ```
+ 7. IN the DNS TXT Record add or modify the following entries based on the RUN Command in the "add Host page" of Rancher UI: 
+
+	```
+	AGENT=
+	RANCHERURL=
+	ENCRYPTED=
+	JOINTOKEN=
+	```
+	
+#### CLIENT
+Make shure you've modified the TXT entriy as described before, a static DHCP entry exists and a Host entry on your DNS is present.
+
+1. Boot your Server, VM, whatever with your new created bootCD
+2. Choose your previous created entry `Docker Client`
+3. Ubuntu will be installed automatically
+
+	- gets its Hostname from DNS
+ 	- gets Static IP from DHCP
+ 	- installs predefined packages
+ 	- installs udpates
+ 	- fetch Dockerversion, Rancherport, Rancherhost, Jointoken --> installs Docker and Starts a Rancher Client Container based on the informations in yout TXT Record.
+ 4. The Host schould automatically apear in the Rancher UI within 2-10 Minutes.
+ 
+ 
+ 
+
+ 
+ 	
 
 
 
