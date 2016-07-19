@@ -90,13 +90,12 @@ Make shure you have created a static entry on your DHCP Server and a host entry 
  rancher/agent:{RANCHERVERSION} \
  http://{RANCHERURL}:{RANCHERPORT}/v1/scripts/{JOINTOKEN}
  ```
- 7. IN the DNS TXT Record add or modify the following entries based on the RUN Command in the "add Host page" of Rancher UI: 
+7. IN the DNS TXT Record add or modify the following entries based on the RUN Command in the "add Host page" of Rancher UI: 
 
 	```
-	AGENT=
-	RANCHERURL=
-	ENCRYPTED=
-	JOINTOKEN=
+	AGENT={RANCHERVERSION}
+	RANCHERURL={RANCHERURL}
+	JOINTOKEN={JOINTOKEN}
 	```
 	
 #### CLIENT
@@ -111,7 +110,7 @@ Make shure you've modified the TXT entriy as described before, a static DHCP ent
  	- installs predefined packages
  	- installs udpates
  	- fetch Dockerversion, Rancherport, Rancherhost, Jointoken --> installs Docker and Starts a Rancher Client Container based on the informations in yout TXT Record.
- 4. The Host schould automatically apear in the Rancher UI within 2-10 Minutes.
+4. The Host schould automatically apear in the Rancher UI within 2-10 Minutes.
  
  
  
