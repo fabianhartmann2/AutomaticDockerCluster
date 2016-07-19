@@ -16,7 +16,7 @@ JOINTOKEN={Token to join nodes to a Enviroment}
 ```
 ## HOW TO
 ### Prepare
-Define a IP Rancher for the Cluster.
+Define a IP-Ranche for the Cluster.
 Create a DNS Concept.
 In my case i use a subdomain (docker.praxisservices.local), every host is gets a host record with its company wide uniq machine name and a cname entry like node{sequence number}.
 #### DHCP Entry
