@@ -37,8 +37,8 @@ Use my script "bootcdassistant.sh" to copy all files from the iso file.
 2. The Script shows you the path to the dumped files.
 3. Navigate to the dumped file directory
 4. Use system-config-kickstart to create a Standard Kickstart file, based on your needs and save it twice to your dumped file directory. Named master.cfg and client.cfg
-5. Copy the `%post` section from my template tmplate_master.cfg file and paste it into master.cfg
-6. Copy the `%post` section from my template tmplate_client.cfg file and paste it intoclient.cfg
+5. Copy the `%post` section from my template template_master.cfg file and paste it into master.cfg
+6. Copy the `%post` section from my template template_client.cfg file and paste it into client.cfg
 7. Change the variable `sourceurl` on both files to the FQDN of your TXT record.
 8. I also recommend to add the following packages to the `%packages` section
 	 - ca-certificates
@@ -80,7 +80,7 @@ Make shure you have created a static entry on your DHCP Server and a host entry 
  	- fetch Dockerversion, Rancherport --> installs Docker and Rancher Server
 
 4. Open a Browser and browse to {FQDN of Master}:{Rancherport}
-5. Create a Enviroment and choose Orchestration Tecnology
+5. Create a Enviroment and choose your perfered Orchestration Tecnology
 6. Navigate to add a host. You will see something like:
  
  ```
@@ -90,7 +90,7 @@ Make shure you have created a static entry on your DHCP Server and a host entry 
  rancher/agent:{RANCHERVERSION} \
  http://{RANCHERURL}:{RANCHERPORT}/v1/scripts/{JOINTOKEN}
  ```
-7. IN the DNS TXT Record add or modify the following entries based on the RUN Command in the "add Host page" of Rancher UI: 
+7. IN the DNS TXT Record add or modify the following entries based on the RUN Command in the "add Host page" of Rancher UI (step 7 ): 
 
 	```
 	AGENT={RANCHERVERSION}
