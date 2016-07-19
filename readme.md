@@ -79,9 +79,9 @@ Make shure you have created a static entry on your DHCP Server and a host entry 
  	- installs udpates
  	- fetch Dockerversion, Rancherport --> installs Docker and Rancher Server
 
- 4. Open a Browser and browse to {FQDN of Master}:{Rancherport}
- 5. Create a Enviroment and choose Orchestration Tecnology
- 6. Navigate to add a host. You will see something like:
+4. Open a Browser and browse to {FQDN of Master}:{Rancherport}
+5. Create a Enviroment and choose Orchestration Tecnology
+6. Navigate to add a host. You will see something like:
  
  ```
  sudo docker run -d --privileged \
