@@ -1,5 +1,5 @@
 # Automatic Docker Cluster
-This Article describes how i created a Ubuntu Installer wich modified Kickstart File to automatic deploy a Docker Cluster managed with Rancher.
+This Article describes how i created a Ubuntu Installer with Kickstart File to automatic deploy a Docker Cluster managed with Rancher.
 
 ## Concept
 The Idea behind was to simply create and scale a docker cluster without configure each node manualy.
