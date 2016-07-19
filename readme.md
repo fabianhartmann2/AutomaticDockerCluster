@@ -61,10 +61,10 @@ Use my script "bootcdassistant.sh" to copy all files from the iso file.
   	append  file=/cdrom/preseed/ubuntu-server.seed vga=788 initrd=/install/	initrd.gz ks=cdrom:/client.cfg -- 
   	
 ```
-  	
-Modify the label, menu label and path to your kickstart file. I've had troubles storing the cfg files in a directory on the cdrom, but root worked fine.
+ 	
+12. Modify the label, menu label and path to your kickstart file. I've had troubles storing the cfg files in a directory on the cdrom, but root worked fine.
 
-11. To create the ISO, run: `bootcdassistant.sh create {path to dumped file directory} {name of cdvolume} {path to new iso file}`
+12. To create the ISO, run: `bootcdassistant.sh create {path to dumped file directory} {name of cdvolume} {path to new iso file}`
 	
 ### Installation
 #### MASTER
