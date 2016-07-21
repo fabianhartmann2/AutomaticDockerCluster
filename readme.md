@@ -25,10 +25,12 @@ Get the Mac Address of any Host you use in the Cluster and create a Static entry
 Create a Host entry for every Host you use in the Cluster on the DNS for address resolution.
 Create a TXT entry with the following informations:
 
-		DOCKERSCRIPTVERSION=1.10.sh "Docker Version you want to use"
-		RANCHERURL={FQDN of the Rancher Master}
-		ENCRYPTED=NO {YES currently not supported}
-		RANCHERPORT={Rancher Master Port}
+```
+DOCKERSCRIPTVERSION=1.10.sh "Docker Version you want to use"
+RANCHERURL={FQDN of the Rancher Master}
+ENCRYPTED=NO {YES currently not supported}
+RANCHERPORT={Rancher Master Port}
+```
 #### Personal Install Media
 
 Use my script "bootcdassistant.sh" to copy all files from the iso file.
@@ -78,6 +80,7 @@ Make shure you have created a static entry on your DHCP Server and a host entry 
  	- installs predefined packages
  	- installs udpates
  	- fetch Dockerversion, Rancherport --> installs Docker and Rancher Server
+ 	- takes 10-30 Minutes
 
 4. Open a Browser and browse to {FQDN of Master}:{Rancherport}
 5. Create a Enviroment and choose your perfered Orchestration Tecnology
@@ -110,6 +113,7 @@ Make shure you've modified the TXT entriy as described before, a static DHCP ent
  	- installs predefined packages
  	- installs udpates
  	- fetch Dockerversion, Rancherport, Rancherhost, Jointoken --> installs Docker and Starts a Rancher Client Container based on the informations in yout TXT Record.
+ 	- takes 10-30 Minutes
 4. The Host schould automatically apear in the Rancher UI within 2-10 Minutes.
  
 ## Recources
