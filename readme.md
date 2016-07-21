@@ -83,14 +83,14 @@ Make shure you have created a static entry on your DHCP Server and a host entry 
 5. Create a Enviroment and choose your perfered Orchestration Tecnology
 6. Navigate to add a host. You will see something like:
  
- ```
- sudo docker run -d --privileged \
- -v /var/run/docker.sock:/var/run/docker.sock \
- -v /var/lib/rancher:/var/lib/rancher \
- rancher/agent:{RANCHERVERSION} \
- http://{RANCHERURL}:{RANCHERPORT}/v1/scripts/{JOINTOKEN}
- ```
-7. IN the DNS TXT Record add or modify the following entries based on the RUN Command in the "add Host page" of Rancher UI (step 7 ): 
+ 	```
+ 	sudo docker run -d --privileged \
+ 	-v /var/run/docker.sock:/var/run/docker.sock \
+ 	-v /var/lib/rancher:/var/lib/rancher \
+ 	rancher/agent:{RANCHERVERSION} \
+ 	http://{RANCHERURL}:{RANCHERPORT}/v1/scripts/{JOINTOKEN}
+ 	```
+7. IN the DNS TXT Record add or modify the following entries based on the RUN Command in the "add Host page" of Rancher UI (step 6 ): 
 
 	```
 	AGENT={RANCHERVERSION}
@@ -112,18 +112,10 @@ Make shure you've modified the TXT entriy as described before, a static DHCP ent
  	- fetch Dockerversion, Rancherport, Rancherhost, Jointoken --> installs Docker and Starts a Rancher Client Container based on the informations in yout TXT Record.
 4. The Host schould automatically apear in the Rancher UI within 2-10 Minutes.
  
+## Recources
  
- 
-
- 
- 	
-
-
-
-
-# Recources
  - https://pricklytech.wordpress.com/2013/04/21/ubuntu-server-unattended-installation-custom-cd/
- - 
+
 
 
 
