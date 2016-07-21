@@ -11,7 +11,7 @@ dumpiso() {
 	mount -o loop $iso /mnt/$randomfolder
 	mkdir -p /opt/$randomfolder
 	cp -rT /mnt/$randomfolder /opt/$randomfolder
-	chmod -R 777 /opt/$randomfolder/
+	chmod -R 777 /opt/$randomfolder
 	echo Files have been placet into: /opt/$randomfolder/
 }
 
@@ -19,6 +19,7 @@ createiso() {
 	src=$1
 	name=$2
 	dest=$3
+  cd $dest
 	sudo mkisofs -D -r -V "$name" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o $dest $src
 }
 
